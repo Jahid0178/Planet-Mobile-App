@@ -45,7 +45,6 @@ export default function Details({ route }) {
     avgTemp,
     wikiLink,
   } = planet;
-  console.log(name);
 
   const renderImage = (name) => {
     switch (name) {
