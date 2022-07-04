@@ -13,8 +13,31 @@ import { colors } from "../theme/colors";
 import { PLANET_LIST } from "../data/planet-list";
 import { spacing } from "../theme/spacing";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Home({ navigation }) {
+const PlanetItem = ({ item }) => {
+  const { name, color } = item;
+  const navigation = useNavigation();
+  return (
+    <Pressable
+      onPress={() => navigation.navigate("Details", { planet: item })}
+      style={styles.item}
+    >
+      <View style={{ flexDirection: "row" }}>
+        <View style={[styles.circle, { backgroundColor: color }]} />
+        <Text style={styles.itemName} preset="h3">
+          {name}
+        </Text>
+      </View>
+      <AntDesign name="right" size={18} color="white" />
+    </Pressable>
+  );
+};
+
+export default function Home() {
+  const renderItem = ({ item }) => {
+    return <PlanetItem item={item} />;
+  };
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
@@ -23,23 +46,7 @@ export default function Home({ navigation }) {
         contentContainerStyle={styles.list}
         data={PLANET_LIST}
         keyExtractor={(item) => item.name}
-        renderItem={({ item }) => {
-          const { name, color } = item;
-          return (
-            <Pressable
-              onPress={() => navigation.navigate("Details", { planet: item })}
-              style={styles.item}
-            >
-              <View style={{ flexDirection: "row" }}>
-                <View style={[styles.circle, { backgroundColor: color }]} />
-                <Text style={styles.itemName} preset="h3">
-                  {name}
-                </Text>
-              </View>
-              <AntDesign name="right" size={18} color="white" />
-            </Pressable>
-          );
-        }}
+        renderItem={renderItem}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
     </SafeAreaView>
