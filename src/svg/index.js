@@ -1,10 +1,10 @@
-import Mercury from "./Mercury";
-import Earth from "./Earth";
-import Jupiter from "./Jupiter";
-import Mars from "./Mars";
-import Neptune from "./Neptune";
-import Saturn from "./Saturn";
-import Uranus from "./Uranas";
-import Venus from "./Venus";
+import Mercury from "./PlanetMercury";
+import Earth from "./PlanetEarth";
+import Jupiter from "./PlanetJupiter";
+import Mars from "./PlanetMars";
+import Neptune from "./PlanetNeptune";
+import Saturn from "./PlanetSaturn";
+import Uranus from "./PlanetUranus";
+import Venus from "./PlanetVenus";
 
 export { Mercury, Earth, Jupiter, Mars, Neptune, Saturn, Uranus, Venus };
